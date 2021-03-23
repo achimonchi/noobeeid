@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from "next/link";
 import {ChevronDown, Menu} from "react-feather";
 import Image from "next/image";
@@ -8,6 +8,42 @@ const Nav=()=>{
         navigation:false,
         dropdown:false
     });
+
+    useEffect(()=>{
+        const loc = window.location.href;
+        const locNow = loc.split("/");
+        const home = document.getElementById("home");
+        const about = document.getElementById("about");
+        const services = document.getElementById("services");
+        const portfolio = document.getElementById("portfolio");
+
+        home.classList.remove("active");
+        about.classList.remove("active");
+        services.classList.remove("active");
+        portfolio.classList.remove("active");
+
+        switch(locNow[3]){
+            case "" :
+                console.log("home");
+                home.classList.add("active");
+                
+            break;
+            case "about" :
+                console.log("about");
+                about.classList.add("active");
+            break;
+            case "services" :
+                services.classList.add("active");
+            break;
+            case "portfolio" :
+                portfolio.classList.add("active");
+            break;
+            default :
+                window.alert("Not Found !");
+
+
+        }
+    }, [window.location.href])
 
     const handleToggle=(target)=>{
         
@@ -30,14 +66,15 @@ const Nav=()=>{
     }
 
     return(
-        <nav className="lg:container mx-auto flex items-center p-3 flex-wrap">
-            <div className="brand p-2 mr-4 inline-flex items-center ">
-                <img src="/assets/logo.svg" width="64px" height="64px" className="rounded-2xl" />
+        <nav className="lg:container mx-auto flex items-center px-3 py-1 flex-wrap mb-5">
+            <div className="brand p-2 mr-4 inline-flex items-center mb-5 lg:mb-0">
+                <img src="/assets/logo.svg" width="64px" height="64px" className="rounded-2xl border lg:border-transparent" />
             </div>
             <button 
                 onClick={()=>handleToggle("navigation")}
                 className="
-                text-white inline-flex p-2 bg-gray-800 hover:bg-gray-700 rounded-md lg:hidden ml-auto
+                text-white inline-flex p-2 bg-gray-800 bg-opacity-50 hover:bg-gray-700 rounded-md lg:hidden ml-auto
+                
             ">
                 <Menu/>
             </button>
@@ -45,22 +82,22 @@ const Nav=()=>{
                 <div id="navigation" className="lg:inline-flex lg:flex-row lg:items-center flex flex-col hidden w-full duration-200">
                 {/* <div className="lg:inline-flex lg:flex-grow lg:items-center sm:flex flex-col"> */}
                     <Link href="/">
-                        <div className="nav-link sm:mt-2 mr-1 lg:inline-flex px-3 py-2 lg:text-primary rounded hover:text-white hover:bg-gray-500 duration-200 hover:bg-dark-800 active">
+                        <div id="home" className="nav-link home sm:mt-2 mr-1 lg:inline-flex px-3 py-2 lg:text-primary rounded hover:text-white hover:bg-gray-500 duration-200 hover:bg-dark-800 active">
                             Home
                         </div>
                     </Link>
                     <Link href="/about">
-                        <div className="nav-link sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200">
+                        <div id="about" className="nav-link about sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200">
                             About
                         </div>
                     </Link>
                     <Link href="/services">
-                        <div className="nav-link sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200">
+                        <div id="services" className="nav-link services sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200">
                             Services
                         </div>
                     </Link>
                     <Link href="/portfolio">
-                        <div className="nav-link sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200">
+                        <div id="portfolio" className="nav-link portfolio sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200">
                             Portfolio
                         </div>
                     </Link>

@@ -23,10 +23,15 @@ nav .nav-link{
   margin-bottom:10px;
 }
 
-nav img{
-  width:64px !important;
-  height:64px !important;
+nav .brand{
+  
 }
+
+nav img{
+  width:48px;
+  height:48px;
+}
+
 
 nav .nav-link{
   cursor:pointer;
@@ -62,5 +67,10 @@ nav{
   }
   nav .nav-link:hover{
     background: #353D33;
+  }
+
+  nav img{
+    width:64px !important;
+    height:64px !important;
   }
 }
