@@ -9,41 +9,46 @@ const Nav=()=>{
         dropdown:false
     });
 
+    const [location, setLocation] = useState("");
+
     useEffect(()=>{
-        const loc = window.location.href;
-        const locNow = loc.split("/");
-        const home = document.getElementById("home");
-        const about = document.getElementById("about");
-        const services = document.getElementById("services");
-        const portfolio = document.getElementById("portfolio");
+        if(typeof window !== 'undefined'){
+            const loc = window.location.href;
+            const locNow = loc.split("/");
+            const home = document.getElementById("home");
+            const about = document.getElementById("about");
+            const services = document.getElementById("services");
+            const portfolio = document.getElementById("portfolio");
 
-        home.classList.remove("active");
-        about.classList.remove("active");
-        services.classList.remove("active");
-        portfolio.classList.remove("active");
+            setLocation(loc);
 
-        switch(locNow[3]){
-            case "" :
-                console.log("home");
-                home.classList.add("active");
-                
-            break;
-            case "about" :
-                console.log("about");
-                about.classList.add("active");
-            break;
-            case "services" :
-                services.classList.add("active");
-            break;
-            case "portfolio" :
-                portfolio.classList.add("active");
-            break;
-            default :
-                // window.alert("Not Found !");
+            home.classList.remove("active");
+            about.classList.remove("active");
+            services.classList.remove("active");
+            portfolio.classList.remove("active");
 
-
+            switch(locNow[3]){
+                case "" :
+                    console.log("home");
+                    home.classList.add("active");
+                    
+                break;
+                case "about" :
+                    console.log("about");
+                    about.classList.add("active");
+                break;
+                case "services" :
+                    services.classList.add("active");
+                break;
+                case "portfolio" :
+                    portfolio.classList.add("active");
+                break;
+                default :
+                    // window.alert("Not Found !");
+            }
         }
-    }, [window.location.href])
+        
+    }, [location])
 
     const handleToggle=(target)=>{
         
