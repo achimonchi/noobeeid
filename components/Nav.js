@@ -39,7 +39,7 @@ const Nav=()=>{
                 portfolio.classList.add("active");
             break;
             default :
-                window.alert("Not Found !");
+                // window.alert("Not Found !");
 
 
         }
