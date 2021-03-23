@@ -1,5 +1,5 @@
 export default function About(){
     return (
-        <h1>About</h1>
+        <h1 className="text-center font-bold uppercase text-2xl">About</h1>
     )
 }

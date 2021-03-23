@@ -14,8 +14,8 @@ export default function Home() {
 
 const Banner=()=>{
   return(
-    <div className="container">
-      
+    <div className="container mx-auto">
+      <h1 className="text-center text-2xl font-bold uppercase">Hello World</h1>
     </div>
   )
 }

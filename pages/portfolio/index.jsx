@@ -1,5 +1,5 @@
 export default function Portfolio(){
     return (
-        <h1>Portfolio</h1>
+        <h1 className="text-center font-bold uppercase text-2xl">Portfolio</h1>
     )
 }

@@ -7,18 +7,20 @@ body {
   padding: 0;
   margin: 0;
   background : #FFD10F;
+  color:#353D33;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 
-nav .link.active{
+nav .nav-link.active{
   font-weight: bold;
 }
 
-nav .link{
-  font-size: 16pt;
-
+nav .nav-link{
+  font-size: 12pt;
+  color:#eaeaea;
+  margin-bottom:10px;
 }
 
 nav img{
@@ -26,8 +28,39 @@ nav img{
   height:64px !important;
 }
 
+nav .nav-link{
+  cursor:pointer;
+}
+
+/* nav .nav-link:hover{
+  background: #;
+} */
+
+.bg-primary{
+  background: #353D33;
+}
+
+.text-primary{
+  color : #353D33;
+}
+
 nav .menu-responsive{
 
 }
 
-/* @media */
+nav{
+  background: #353D33;
+}
+
+@media (min-width: 768px){
+  nav{
+    background: transparent;
+  }
+
+  nav .nav-link{
+    color:#353D33;
+  }
+  nav .nav-link:hover{
+    background: #353D33;
+  }
+}
