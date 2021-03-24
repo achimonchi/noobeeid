@@ -1,9 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import {useRef, useEffect} from "react";
-import {TweenMax, TimelineLite, Power3, gsap} from "gsap";
-import {CSSPlugin} from "gsap/CSSPlugin";
-
+import {TweenMax, TimelineLite, Power3, gsap, CSSPlugin} from "gsap";
 gsap.registerPlugin(CSSPlugin);
 
 export default function Home() {
