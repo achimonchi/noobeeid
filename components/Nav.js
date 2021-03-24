@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Link from "next/link";
 import {useRouter} from "next/router";
-import {ChevronDown, Menu} from "react-feather";
+import {ChevronDown, Menu, Globe, Smartphone, Image, Gitlab, Settings} from "react-feather";
 
 const Nav=()=>{
     const router = useRouter();
@@ -72,14 +72,13 @@ const Nav=()=>{
     }, [toggle])
 
     const handleToggle=(target)=>{
-        
         const newToggle = {...toggle};
         newToggle[target] = !newToggle[target]; 
         setToggle(newToggle);
     }
 
     return(
-        <nav id="navbar" className="container duration-200 mx-auto flex items-center px-3 py-1 flex-wrap top-0 fixed left-0 right-0 ">
+        <nav id="navbar" className="z-10 container duration-200 mx-auto flex items-center px-3 py-1 flex-wrap top-0 fixed left-0 right-0 ">
             <div className="brand p-2 mr-4 inline-flex items-center">
                 <img src="/assets/logo.svg" alt="logo" className="rounded-2xl border lg:border-transparent w-8 h-8" />
                 <h1 className="text-white ml-2 lg:hidden font-bold tracking-wide">NOOBEEID</h1>
@@ -118,11 +117,11 @@ const Nav=()=>{
                             About
                         </div>
                     </Link>
-                    <Link href="/services">
-                        <div id="services" className="nav-link services sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200">
-                            Services
-                        </div>
-                    </Link>
+                    
+                    <div onClick={()=>handleToggle("dropdown")} id="services" className="nav-link services sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200 flex flex-col lg:flex-row">
+                        <div className="flex">Services <ChevronDown className="font-bold text-sm"/></div>
+                        <Dropdown toggle={toggle.dropdown} />
+                    </div>
                     <Link href="/portfolio">
                         <div id="portfolio" className="nav-link portfolio sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200">
                             Portfolio
@@ -136,6 +135,136 @@ const Nav=()=>{
                 </div>
             </div>
         </nav>
+    )
+}
+
+const Dropdown = (props)=>{
+    useEffect(()=>{ 
+        const {toggle} = props;
+        const dropdown = document.getElementById("dropdown");
+        const dropdownMobile = document.getElementById("dropdown-mobile");
+
+        if(innerWidth > 800){
+            if(toggle){
+                dropdown.classList.remove("hidden");
+            } else {
+                dropdown.classList.add("hidden");
+            }
+        } else {
+            if(toggle){
+                dropdownMobile.classList.remove("hidden");
+            } else {
+                dropdownMobile.classList.add("hidden");
+            }
+
+        }
+
+    }, [props.toggle])
+    return(
+        <>
+            <div 
+                className="
+                    dropdown 
+                    relative
+                    flex
+                    flex-col
+                    pl-3
+                    mt-2
+                    lg:hidden
+                " 
+            id="dropdown-mobile">
+
+                <Link href="/services">
+                    <div className="mt-3 p-2 flex w-full border-b border-gray-100">
+                        <h1 className="font-bold">Web Development</h1>
+                        
+                    </div>
+                </Link>
+                <Link href="/services">
+                    <div className="mt-3 p-2 flex w-full border-b border-gray-100">
+                        <h1 className="font-bold">UI UX Design</h1>
+                    </div>
+                </Link>
+                <Link href="/services">
+                    <div className="mt-3 p-2 flex w-full border-b border-gray-100">
+                        <h1 className="font-bold">Mobile Development</h1>
+                    </div>
+                </Link>
+                <Link href="/services">
+                    <div className="mt-3 p-2 flex w-full border-b border-gray-100">
+                        <h1 className="font-bold">Branding</h1>
+                    </div>
+                </Link>
+                <Link href="/services">
+                    <div className="mt-3 p-2 flex w-full border-b border-gray-100">
+                        <h1 className="font-bold">Training</h1>
+                    </div>
+                </Link>
+            </div>
+            <div 
+                className="
+                    dropdown 
+                    bg-gray-50 
+                    p-3
+                    absolute
+                    mt-10
+                    left-24
+                    w-8/12
+                    grid 
+                    grid-cols-12
+                    rounded-2xl
+                    hidden
+                    shadow-xl
+                " 
+            id="dropdown">
+
+                <Link href="/services">
+                    <div className="p-4 col-span-6 opacity-50 hover:opacity-100 duration-150 text-gray-800 hover:shadow-md hover:bg-white rounded-lg">
+                        <div className="p-2 top-0 relative self-start flex flex-col"><Globe/></div>
+                        <div>
+                            <h1 className="font-bold">Web Development</h1>
+                            <p className="font-normal">Kami menyediakan layanan dalam pengembangan aplikasi berbasis website</p>
+                        </div>
+                    </div>
+                </Link>
+                <Link href="/services">
+                    <div className="p-4 col-span-6 opacity-50 hover:opacity-100 duration-150 text-gray-800 hover:shadow-md hover:bg-white rounded-lg">
+                        <div className="p-2 top-0 relative self-start"><Image/></div>
+                        <div>
+                            <h1 className="font-bold">UI UX Design</h1>
+                            <p className="font-normal">User Experience dan Interface yang baik sangat berpengaruh dalam bisnis digital</p>
+                        </div>
+                    </div>
+                </Link>
+                <Link href="/services">
+                    <div className="p-4 col-span-6 opacity-50 hover:opacity-100 duration-150 text-gray-800 hover:shadow-md hover:bg-white rounded-lg">
+                        <div className="p-2 top-0 relative self-start"><Smartphone/></div>
+                        <div>
+                            <h1 className="font-bold">Mobile Development</h1>
+                            <p className="font-normal">Kami menyediakan layanan dalam pengembangan aplikasi mobile.</p>
+                        </div>
+                    </div>
+                </Link>
+                <Link href="/services">
+                    <div className="p-4 col-span-6 opacity-50 hover:opacity-100 duration-150 text-gray-800 hover:shadow-md hover:bg-white rounded-lg">
+                        <div className="p-2 top-0 relative self-start"><Gitlab/></div>
+                        <div>
+                            <h1 className="font-bold">Branding</h1>
+                            <p className="font-normal">Butuh logo? Design grafis? atau design untuk memperkuat brand kamu? Kami bisa.</p>
+                        </div>
+                    </div>
+                </Link>
+                <Link href="/services">
+                    <div className="p-4 col-span-6 opacity-50 hover:opacity-100 duration-150 text-gray-800 hover:shadow-md hover:bg-white rounded-lg">
+                        <div className="p-2 top-0 relative self-start"><Settings/></div>
+                        <div>
+                            <h1 className="font-bold">Training</h1>
+                            <p className="font-normal">Kami mempunyai trainer yang professional dan berkompeten dibidangnya.</p>
+                        </div>
+                    </div>
+                </Link>
+            </div>
+        </>
     )
 }
 
