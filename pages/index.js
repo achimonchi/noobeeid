@@ -30,7 +30,7 @@ const Banner=()=>{
     
     tl.staggerFrom([images, cloud1], 1, {scale:0.5, opacity:0, ease: Power3.easeInOut}, .2)
     tl
-      .to(cloud1, 2, {x:-(innerWidth / 10), repeat:-1, ease: Power3.easeInOut, yoyo:true}, "-=2")
+      .to(cloud1, 3, {x:-(innerWidth / 5), repeat:-1, ease:"none", yoyo:true}, "-=2")
 
     tl.staggerFrom(banner.children, 0.5, {y:10, x:10, opacity:0, ease: Power3.easeInOut}, .3);
 
