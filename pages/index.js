@@ -27,16 +27,10 @@ const Banner=()=>{
 
     TweenMax.to(bannerContainer, 0, {css:{visibility: 'visible'}})
 
-    const headline = banner.children[0];
-    const subHeadline = banner.children[1];
-    console.log({headline, subHeadline});
-
-    tl.from(images, 1.2, {scale:0.5, opacity:0, ease: Power3.easeInOut}, .2)
+    tl.from(images, 1, {scale:0.5, opacity:0, ease: Power3.easeInOut}, .2)
     // tl.from(banner, 1, {x:-500, opacity:0, ease: Power3.easeInOut}, .5)
-
     // content animation
-    // tl.s
-    tl.staggerFrom(banner.children, 1, {y:44, opacity:0, ease: Power3.easeInOut, delay: 0.8}, .3);
+    tl.staggerFrom(banner.children, 0.5, {y:10, x:10, opacity:0, ease: Power3.easeInOut, delay: 0}, .3);
   }, [])
 
   return(
@@ -45,7 +39,7 @@ const Banner=()=>{
         <div className="grid grid-cols-12 h-full">
           <div ref={el=>banner = el} className="lg:col-span-4 col-span-12 flex flex-col justify-start lg:justify-center top-0 h-full lg:p-5 px-5 order-2 lg:order-1 ">
             <h1 className="w-full md:w-10/12 mx-auto lg:w-full text-2xl md:text-4xl lg:text-5xl text-center lg:text-left">Sudah siap untuk menuju era <span className="font-bold">Go-Digital</span> ?</h1>
-              <h2 className="text-xs md:text-xl lg:text-base mt-2 lg:mt-5 text-center md:w-10/12 lg:w-full md:mx-auto lg:text-left "><b>NooBeeID</b> adalah <b>Full Services Digital Agensi</b> yang siap membantu kamu untuk <b>go-digital</b>.</h2>
+              <h2 className="opacity-80 text-base md:text-xl lg:text-xl mt-2 lg:mt-5 text-center md:w-10/12 lg:w-full md:mx-auto lg:text-left "><b>NooBeeID</b> adalah <b>Full Services Digital Agensi</b> yang siap membantu kamu untuk <b>go-digital</b>.</h2>
             <div className="grid grid-cols-12">
             </div>
             <Link href="/about">
