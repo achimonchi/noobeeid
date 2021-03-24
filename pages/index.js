@@ -19,17 +19,22 @@ const Banner=()=>{
   let bannerContainer = useRef(null);
   let banner = useRef(null);
   let images = useRef(null);
+  let cloud1 = useRef(null);
 
   const tl = new TimelineLite();
 
   useEffect(()=>{
 
     TweenMax.to(bannerContainer, 0, {css:{visibility: 'visible'}})
+    
+    
+    tl.staggerFrom([images, cloud1], 1, {scale:0.5, opacity:0, ease: Power3.easeInOut}, .2)
+    tl
+      .to(cloud1, 2, {x:-(innerWidth / 10), repeat:-1, ease: Power3.easeInOut, yoyo:true}, "-=2")
 
-    tl.from(images, 1, {scale:0.5, opacity:0, ease: Power3.easeInOut}, .2)
-    // tl.from(banner, 1, {x:-500, opacity:0, ease: Power3.easeInOut}, .5)
-    // content animation
-    tl.staggerFrom(banner.children, 0.5, {y:10, x:10, opacity:0, ease: Power3.easeInOut, delay: 0}, .3);
+    tl.staggerFrom(banner.children, 0.5, {y:10, x:10, opacity:0, ease: Power3.easeInOut}, .3);
+
+
   }, [])
 
   return(
@@ -48,7 +53,8 @@ const Banner=()=>{
             </Link>
           </div>
           <div className="lg:col-span-8 col-span-12 flex items-center justify-end lg:justify-center order-1 lg:order-2 h-6/12 flex-col">
-            <img ref={el=>images=el} width="100%" height="100%" alt="banner" className="w-10/12 lg:w-full" src="/assets/banner.svg" />
+            <img ref={el=>cloud1=el} width="100%" height="100%" alt="banner" className="w-5/12 lg:w-auto" src="/assets/cloud1.svg" />
+            <img ref={el=>images=el} width="100%" height="100%" alt="banner" className="w-10/12 lg:w-full" src="/assets/banner2.svg" />
           </div>
         </div>
       </div>
