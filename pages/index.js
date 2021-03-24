@@ -26,11 +26,18 @@ const Banner=()=>{
   useEffect(()=>{
 
     TweenMax.to(bannerContainer, 0, {css:{visibility: 'visible'}})
-    
+
+    console.log({innerWidth});
     
     tl.staggerFrom([images, cloud1], 1, {scale:0.5, opacity:0, ease: Power3.easeInOut}, .2)
+
+    let time = 3;
+
+    if(innerWidth > 920){
+      time = 5;
+    } 
     tl
-      .to(cloud1, 3, {x:-(innerWidth / 5), repeat:-1, ease:"none", yoyo:true}, "-=2")
+      .to(cloud1, time, {x:-(innerWidth / 5), repeat:-1, ease:"none", yoyo:true}, "-=2")
 
     tl.staggerFrom(banner.children, 0.5, {y:10, x:10, opacity:0, ease: Power3.easeInOut}, .3);
 
