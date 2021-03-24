@@ -64,25 +64,18 @@ const Nav=()=>{
         const newToggle = {...toggle};
         newToggle[target] = !newToggle[target]; 
         setToggle(newToggle);
-        
-        // if(toggle){
-            // document.getElementById("dropdown").classList.add("hidden");
-        // } else {
-        //     document.getElementById("dropdown").classList.remove("hidden");
-        // }
     }
 
     return(
-        <nav className="lg:container mx-auto flex items-center px-3 py-1 flex-wrap mb-5 top-0 fixed left-0 right-0 ">
+        <nav className="container mx-auto flex items-center px-3 py-1 flex-wrap top-0 fixed left-0 right-0 ">
             <div className="brand p-2 mr-4 inline-flex items-center">
-                <img src="/assets/logo.svg" width="64px" height="64px" alt="logo" className="rounded-2xl border lg:border-transparent" />
+                <img src="/assets/logo.svg" alt="logo" className="rounded-2xl border lg:border-transparent w-8 h-8" />
                 <h1 className="text-white ml-2 lg:hidden font-bold tracking-wide">NOOBEEID</h1>
             </div>
             <button 
                 onClick={()=>handleToggle("navigation")}
                 className="
                 text-white inline-flex p-2 bg-gray-800 bg-opacity-50 hover:bg-gray-700 rounded-md lg:hidden ml-auto
-                
             ">
                 <Menu/>
             </button>
