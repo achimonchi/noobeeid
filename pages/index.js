@@ -9,7 +9,6 @@ export default function Home() {
     <div className="h-full">
       <Head>
         <title>NooBeeID</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Banner/>    
     </div>
