@@ -1,7 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
 import {useRef, useEffect} from "react";
-import {TweenMax, TimelineLite, Power3} from "gsap";
+import {TweenMax, TimelineLite, Power3, gsap} from "gsap";
+import {CSSPlugin} from "gsap/CSSPlugin";
+
+gsap.registerPlugin(CSSPlugin);
 
 export default function Home() {
   return (
@@ -16,13 +19,16 @@ export default function Home() {
 }
 
 const Banner=()=>{
+  let bannerContainer = useRef(null);
   let banner = useRef(null);
   let images = useRef(null);
 
   const tl = new TimelineLite();
 
   useEffect(()=>{
-    // TweenMax.to(banner, 0, {css:{visibility: 'visible'}})
+
+    TweenMax.to(bannerContainer, 0, {css:{visibility: 'visible'}})
+
     const headline = banner.children[0];
     const subHeadline = banner.children[1];
     console.log({headline, subHeadline});
@@ -36,7 +42,7 @@ const Banner=()=>{
   }, [])
 
   return(
-    <section id="banner" className="banner h-full pt-10 md:pt-20" >
+    <section id="banner" ref={el=>bannerContainer=el} className="banner h-full pt-10 md:pt-20 invisible" >
       <div className="container mx-auto h-full">
         <div className="grid grid-cols-12 h-full">
           <div ref={el=>banner = el} className="lg:col-span-4 col-span-12 flex flex-col justify-start lg:justify-center top-0 h-full lg:p-5 px-5 order-2 lg:order-1 ">
