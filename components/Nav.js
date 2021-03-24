@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Link from "next/link";
 import {useRouter} from "next/router";
 import {ChevronDown, Menu, Globe, Smartphone, Image, Gitlab, Settings} from "react-feather";
@@ -108,27 +108,27 @@ const Nav=()=>{
                     transform"
                 >
                     <Link href="/">
-                        <div id="home" className="nav-link home mt-5 lg:mt-2 mr-1 lg:inline-flex px-3 py-2 lg:text-primary rounded hover:text-white hover:bg-gray-500 duration-200 hover:bg-dark-800 active">
+                        <div id="home" className="nav-link home mt-5 lg:mt-2 mr-1 lg:inline-flex px-3 py-2 lg:text-primary rounded hover:text-white hover:bg-gray-800 hover:bg-opacity-50 duration-200 hover:bg-dark-800 active">
                             Home
                         </div>
                     </Link>
                     <Link href="/about">
-                        <div id="about" className="nav-link about sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200">
+                        <div id="about" className="nav-link about sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-800 hover:bg-opacity-50 duration-200">
                             About
                         </div>
                     </Link>
                     
-                    <div onClick={()=>handleToggle("dropdown")} id="services" className="nav-link services sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200 flex flex-col lg:flex-row">
+                    <div onClick={()=>handleToggle("dropdown")} id="services" className="nav-link services sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-800 hover:bg-opacity-50 duration-200 flex flex-col lg:flex-row">
                         <div className="flex">Services <ChevronDown className="font-bold text-sm"/></div>
                         <Dropdown toggle={toggle.dropdown} />
                     </div>
                     <Link href="/portfolio">
-                        <div id="portfolio" className="nav-link portfolio sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-500 duration-200">
+                        <div id="portfolio" className="nav-link portfolio sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-800 hover:bg-opacity-50 duration-200">
                             Portfolio
                         </div>
                     </Link>
                     <Link href="/about" className="text-white">
-                        <div className="nav-link sm:mt-2 mr-1 mr-3 lg:ml-auto bg-primary px-3 py-2 sm:w-full lg:w-auto lg:py-2 lg:px-10 rounded-md sm:w-full lg:w-auto text-white hover:text-white hover:bg-gray-500" >
+                        <div className="nav-link sm:mt-2 mr-1 mr-3 lg:ml-auto bg-primary px-3 py-2 sm:w-full lg:w-auto lg:py-2 lg:px-10 rounded-md sm:w-full lg:w-auto text-white hover:text-white hover:bg-gray-800 hover:bg-opacity-50" >
                             <div className="text-white">Get in Touch</div>
                         </div>
                     </Link>
@@ -139,6 +139,7 @@ const Nav=()=>{
 }
 
 const Dropdown = (props)=>{
+    let dropdownList = useRef(null);
     useEffect(()=>{ 
         const {toggle} = props;
         const dropdown = document.getElementById("dropdown");
@@ -146,9 +147,11 @@ const Dropdown = (props)=>{
 
         if(innerWidth > 800){
             if(toggle){
-                dropdown.classList.remove("hidden");
+                // dropdown.classList.remove("hidden");
+                
+                dropdown.classList.remove("scale-0");
             } else {
-                dropdown.classList.add("hidden");
+                dropdown.classList.add("scale-0");
             }
         } else {
             if(toggle){
@@ -163,6 +166,7 @@ const Dropdown = (props)=>{
     return(
         <>
             <div 
+                ref={el=>dropdownList=el}
                 className="
                     dropdown 
                     relative
@@ -171,33 +175,33 @@ const Dropdown = (props)=>{
                     pl-3
                     mt-2
                     lg:hidden
+                    py-2
                 " 
             id="dropdown-mobile">
-
                 <Link href="/services">
-                    <div className="mt-3 p-2 flex w-full border-b border-gray-100">
-                        <h1 className="font-bold">Web Development</h1>
+                    <div className="mt-3 p-2 flex w-full border-b border-opacity-50 border-gray-100">
+                        <h1 className="">Web Development</h1>
                         
                     </div>
                 </Link>
                 <Link href="/services">
-                    <div className="mt-3 p-2 flex w-full border-b border-gray-100">
-                        <h1 className="font-bold">UI UX Design</h1>
+                    <div className="mt-3 p-2 flex w-full border-b border-opacity-50 border-gray-100">
+                        <h1 className="">UI UX Design</h1>
                     </div>
                 </Link>
                 <Link href="/services">
-                    <div className="mt-3 p-2 flex w-full border-b border-gray-100">
-                        <h1 className="font-bold">Mobile Development</h1>
+                    <div className="mt-3 p-2 flex w-full border-b border-opacity-50 border-gray-100">
+                        <h1 className="">Mobile Development</h1>
                     </div>
                 </Link>
                 <Link href="/services">
-                    <div className="mt-3 p-2 flex w-full border-b border-gray-100">
-                        <h1 className="font-bold">Branding</h1>
+                    <div className="mt-3 p-2 flex w-full border-b border-opacity-50 border-gray-100">
+                        <h1 className="">Branding</h1>
                     </div>
                 </Link>
                 <Link href="/services">
-                    <div className="mt-3 p-2 flex w-full border-b border-gray-100">
-                        <h1 className="font-bold">Training</h1>
+                    <div className="mt-3 p-2 flex w-full border-b border-opacity-50 border-gray-100">
+                        <h1 className="">Training</h1>
                     </div>
                 </Link>
             </div>
@@ -213,8 +217,10 @@ const Dropdown = (props)=>{
                     grid 
                     grid-cols-12
                     rounded-2xl
-                    hidden
                     shadow-xl
+                    scale-0
+                    duration-200
+                    transform
                 " 
             id="dropdown">
 
