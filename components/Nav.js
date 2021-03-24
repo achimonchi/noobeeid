@@ -69,7 +69,7 @@ const Nav=()=>{
 
     return(
         <nav className="lg:container mx-auto flex items-center px-3 py-1 flex-wrap mb-5">
-            <div className="brand p-2 mr-4 inline-flex items-center mb-5 lg:mb-0">
+            <div className="brand p-2 mr-4 inline-flex items-center">
                 <img src="/assets/logo.svg" width="64px" height="64px" className="rounded-2xl border lg:border-transparent" />
             </div>
             <button 
@@ -84,7 +84,7 @@ const Nav=()=>{
                 <div id="navigation" className="lg:inline-flex lg:flex-row lg:items-center flex flex-col hidden w-full duration-200">
                 {/* <div className="lg:inline-flex lg:flex-grow lg:items-center sm:flex flex-col"> */}
                     <Link href="/">
-                        <div id="home" className="nav-link home sm:mt-2 mr-1 lg:inline-flex px-3 py-2 lg:text-primary rounded hover:text-white hover:bg-gray-500 duration-200 hover:bg-dark-800 active">
+                        <div id="home" className="nav-link home mt-5 lg:mt-2 mr-1 lg:inline-flex px-3 py-2 lg:text-primary rounded hover:text-white hover:bg-gray-500 duration-200 hover:bg-dark-800 active">
                             Home
                         </div>
                     </Link>
