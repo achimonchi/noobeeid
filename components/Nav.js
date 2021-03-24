@@ -52,8 +52,10 @@ const Nav=()=>{
 
     useEffect(()=>{
         if(toggle.navigation){
+            document.getElementById("navbar").classList.add("bg-primary");
             document.getElementById("navigation").classList.remove("hidden");
         } else {
+            document.getElementById("navbar").classList.remove("bg-primary");
             document.getElementById("navigation").classList.add("hidden");
 
         }
@@ -67,7 +69,7 @@ const Nav=()=>{
     }
 
     return(
-        <nav className="container mx-auto flex items-center px-3 py-1 flex-wrap top-0 fixed left-0 right-0 ">
+        <nav id="navbar" className="container duration-200 mx-auto flex items-center px-3 py-1 flex-wrap top-0 fixed left-0 right-0 ">
             <div className="brand p-2 mr-4 inline-flex items-center">
                 <img src="/assets/logo.svg" alt="logo" className="rounded-2xl border lg:border-transparent w-8 h-8" />
                 <h1 className="text-white ml-2 lg:hidden font-bold tracking-wide">NOOBEEID</h1>

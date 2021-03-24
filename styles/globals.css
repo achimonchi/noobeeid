@@ -54,11 +54,12 @@ nav .menu-responsive{
 }
 
 
-nav{
-  background: #353D33;
-  /* position:fixed;
-  left: 0;
-  right:0; */
+nav h1{
+  color:#353D33 !important;
+}
+
+nav.bg-primary h1{
+  color : white !important;
 }
 
 /* banner */
@@ -67,7 +68,7 @@ html, body, #__next{
 }
 
 @media (min-width: 920px){
-  nav{
+  nav, nav.bg-primary{
     background: transparent;
   }
 

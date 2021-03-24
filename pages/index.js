@@ -24,7 +24,7 @@ const Banner=()=>{
             <div className="grid grid-cols-12">
             </div>
             <Link href="/about">
-              <div className="bg-gray-800 text-white py-2 px-10 mt-3 text-center rounded-md lg:w-3/4 md:w-2/4 self-center lg:self-start ">
+              <div className="bg-primary text-white py-2 px-10 mt-3 text-center rounded-md lg:w-3/4 md:w-2/4 self-center lg:self-start ">
                 Hubungi Kami
               </div>
             </Link>
