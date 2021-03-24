@@ -30,7 +30,7 @@ const Banner=()=>{
             </Link>
           </div>
           <div className="lg:col-span-8 col-span-12 flex items-center justify-end lg:justify-center order-1 lg:order-2 h-6/12 flex-col">
-            <img width="100%" height="100%" alt="banner" className="w-10/12 lg:w-full" src="/assets/banner2.svg" />
+            <img width="100%" height="100%" alt="banner" className="w-10/12 lg:w-full" src="/assets/banner.svg" />
           </div>
         </div>
       </div>
