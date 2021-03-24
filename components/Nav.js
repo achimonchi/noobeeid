@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import Link from "next/link";
+import {useRouter} from "next/router";
 import {ChevronDown, Menu} from "react-feather";
 import Image from "next/image";
 
 const Nav=()=>{
+    const router = useRouter();
+
     const [toggle, setToggle] = useState({
         navigation:false,
         dropdown:false
@@ -12,43 +15,37 @@ const Nav=()=>{
     const [location, setLocation] = useState("");
 
     useEffect(()=>{
-        if(typeof window !== 'undefined'){
-            const loc = window.location.href;
-            const locNow = loc.split("/");
-            const home = document.getElementById("home");
-            const about = document.getElementById("about");
-            const services = document.getElementById("services");
-            const portfolio = document.getElementById("portfolio");
+        console.log({router})
+        const locNow = router.pathname;
+        const home = document.getElementById("home");
+        const about = document.getElementById("about");
+        const services = document.getElementById("services");
+        const portfolio = document.getElementById("portfolio");
 
-            setLocation(loc);
+        home.classList.remove("active");
+        about.classList.remove("active");
+        services.classList.remove("active");
+        portfolio.classList.remove("active");
 
-            home.classList.remove("active");
-            about.classList.remove("active");
-            services.classList.remove("active");
-            portfolio.classList.remove("active");
-
-            switch(locNow[3]){
-                case "" :
-                    console.log("home");
-                    home.classList.add("active");
-                    
-                break;
-                case "about" :
-                    console.log("about");
-                    about.classList.add("active");
-                break;
-                case "services" :
-                    services.classList.add("active");
-                break;
-                case "portfolio" :
-                    portfolio.classList.add("active");
-                break;
-                default :
-                    // window.alert("Not Found !");
-            }
+        switch(locNow){
+            case "/" :
+                home.classList.add("active");
+            break;
+            case "/about" :
+                console.log("about");
+                about.classList.add("active");
+            break;
+            case "/services" :
+                services.classList.add("active");
+            break;
+            case "/portfolio" :
+                portfolio.classList.add("active");
+            break;
+            default :
+                console.log("Not Found");
         }
         
-    }, [location])
+    }, [router.pathname])
 
     const handleToggle=(target)=>{
         
