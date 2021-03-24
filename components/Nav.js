@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import Link from "next/link";
 import {useRouter} from "next/router";
 import {ChevronDown, Menu} from "react-feather";
-import Image from "next/image";
 
 const Nav=()=>{
     const router = useRouter();
@@ -54,9 +53,20 @@ const Nav=()=>{
         if(toggle.navigation){
             document.getElementById("navbar").classList.add("bg-primary");
             document.getElementById("navigation").classList.remove("hidden");
+            setTimeout(()=>{
+                document.getElementById("navigation").classList.remove("opacity-0");
+                document.getElementById("navigation").classList.remove("-translate-x-96");
+            }, 200)
         } else {
-            document.getElementById("navbar").classList.remove("bg-primary");
-            document.getElementById("navigation").classList.add("hidden");
+            document.getElementById("navigation").classList.add("-translate-x-96");
+            setTimeout(()=>{
+                document.getElementById("navbar").classList.remove("bg-primary");
+                document.getElementById("navigation").classList.add("opacity-0");
+            },200)
+            setTimeout(()=>{
+                document.getElementById("navigation").classList.add("hidden");
+
+            },300)
 
         }
     }, [toggle])
@@ -82,8 +92,22 @@ const Nav=()=>{
                 <Menu/>
             </button>
             <div className="lg:inline-flex lg:flex-grow lg:w-auto items-center w-full ">
-                <div id="navigation" className="lg:inline-flex lg:flex-row lg:items-center flex flex-col hidden w-full duration-200">
-                {/* <div className="lg:inline-flex lg:flex-grow lg:items-center sm:flex flex-col"> */}
+                <div 
+                id="navigation" 
+                className="
+                    lg:inline-flex 
+                    lg:flex-row 
+                    lg:items-center 
+                    lg:inline
+                    flex 
+                    flex-col 
+                    opacity-0 
+                    lg:opacity-100
+                    w-full 
+                    duration-200 
+                    lg:-translate-x-0
+                    transform"
+                >
                     <Link href="/">
                         <div id="home" className="nav-link home mt-5 lg:mt-2 mr-1 lg:inline-flex px-3 py-2 lg:text-primary rounded hover:text-white hover:bg-gray-500 duration-200 hover:bg-dark-800 active">
                             Home
@@ -106,7 +130,7 @@ const Nav=()=>{
                     </Link>
                     <Link href="/about" className="text-white">
                         <div className="nav-link sm:mt-2 mr-1 mr-3 lg:ml-auto bg-primary px-3 py-2 sm:w-full lg:w-auto lg:py-2 lg:px-10 rounded-md sm:w-full lg:w-auto text-white hover:text-white hover:bg-gray-500" >
-                            <div className="text-white">Hubungi Kami</div>
+                            <div className="text-white">Get in Touch</div>
                         </div>
                     </Link>
                 </div>
