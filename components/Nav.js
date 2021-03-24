@@ -75,7 +75,8 @@ const Nav=()=>{
     return(
         <nav className="lg:container mx-auto flex items-center px-3 py-1 flex-wrap mb-5 top-0 fixed left-0 right-0 ">
             <div className="brand p-2 mr-4 inline-flex items-center">
-                <img src="/assets/logo.svg" width="64px" height="64px" className="rounded-2xl border lg:border-transparent" />
+                <img src="/assets/logo.svg" width="64px" height="64px" alt="logo" className="rounded-2xl border lg:border-transparent" />
+                <h1 className="text-white ml-2 lg:hidden font-bold tracking-wide">NOOBEEID</h1>
             </div>
             <button 
                 onClick={()=>handleToggle("navigation")}

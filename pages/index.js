@@ -20,7 +20,9 @@ const Banner=()=>{
         <div className="grid grid-cols-12 h-full">
           <div className="lg:col-span-4 col-span-12 flex flex-col justify-center h-full p-5">
             <h1 className="text-3xl md:text-4xl lg:text-5xl text-center lg:text-left">Siap untuk menuju era <span className="font-bold">Digital</span> ?</h1>
-            <h4 className="mt-5 text-center lg:text-left"><b>NooBeeID</b> adalah <b>Full Services Digital Agensi</b> yang siap membantu kamu untuk <b>go-digital</b>.</h4>
+            <div className="grid grid-cols-12">
+              <h4 className="mt-5 text-center lg:text-left col-span-10 col-start-2 lg:col-span-12"><b>NooBeeID</b> adalah <b>Full Services Digital Agensi</b> yang siap membantu kamu untuk <b>go-digital</b>.</h4>
+            </div>
             <Link href="/about">
               <div className="bg-gray-800 text-white py-2 px-10 mt-3 text-center rounded-md lg:w-2/4">
                 Hubungi Kami
