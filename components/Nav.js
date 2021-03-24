@@ -12,10 +12,7 @@ const Nav=()=>{
         dropdown:false
     });
 
-    const [location, setLocation] = useState("");
-
     useEffect(()=>{
-        console.log({router})
         const locNow = router.pathname;
         const home = document.getElementById("home");
         const about = document.getElementById("about");
@@ -26,6 +23,12 @@ const Nav=()=>{
         about.classList.remove("active");
         services.classList.remove("active");
         portfolio.classList.remove("active");
+
+        const tempToggle = {...toggle};
+        tempToggle.navigation = false;
+        tempToggle.dropdown = false;
+
+        setToggle(tempToggle);
 
         switch(locNow){
             case "/" :
@@ -47,19 +50,21 @@ const Nav=()=>{
         
     }, [router.pathname])
 
-    const handleToggle=(target)=>{
-        
-        const newToggle = {...toggle};
-        newToggle[target] = !newToggle[target]; 
-        setToggle(newToggle);
-
-        console.log({newToggle})
-        if(newToggle.navigation){
+    useEffect(()=>{
+        if(toggle.navigation){
             document.getElementById("navigation").classList.remove("hidden");
         } else {
             document.getElementById("navigation").classList.add("hidden");
 
         }
+    }, [toggle])
+
+    const handleToggle=(target)=>{
+        
+        const newToggle = {...toggle};
+        newToggle[target] = !newToggle[target]; 
+        setToggle(newToggle);
+        
         // if(toggle){
             // document.getElementById("dropdown").classList.add("hidden");
         // } else {
@@ -68,7 +73,7 @@ const Nav=()=>{
     }
 
     return(
-        <nav className="lg:container mx-auto flex items-center px-3 py-1 flex-wrap mb-5">
+        <nav className="lg:container mx-auto flex items-center px-3 py-1 flex-wrap mb-5 top-0 fixed left-0 right-0 ">
             <div className="brand p-2 mr-4 inline-flex items-center">
                 <img src="/assets/logo.svg" width="64px" height="64px" className="rounded-2xl border lg:border-transparent" />
             </div>

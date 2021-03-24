@@ -53,8 +53,17 @@ nav .menu-responsive{
 
 }
 
+
 nav{
   background: #353D33;
+  /* position:fixed;
+  left: 0;
+  right:0; */
+}
+
+/* banner */
+html, body, #__next{
+  height:100%;
 }
 
 @media (min-width: 768px){
