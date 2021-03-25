@@ -118,8 +118,8 @@ const Nav=()=>{
                         </div>
                     </Link>
                     
-                    <div onClick={()=>handleToggle("dropdown")} id="services" className="nav-link services sm:mt-2 mr-1 lg:inline-flex px-3 py-2 rounded hover:text-white hover:bg-gray-800 hover:bg-opacity-50 duration-200 flex flex-col lg:flex-row">
-                        <div className="flex">Services <ChevronDown className="font-bold text-sm"/></div>
+                    <div onClick={()=>handleToggle("dropdown")} id="services" className="nav-link services sm:mt-2 mr-1 lg:inline-flex justify-between px-3 py-2 rounded hover:text-white hover:bg-gray-800 hover:bg-opacity-50 duration-200 flex flex-col lg:flex-row">
+                        <div className="flex">Services <ChevronDown className="font-bold text-sm absolute lg:relative right-2 lg:right-auto"/></div>
                         <Dropdown toggle={toggle.dropdown} />
                     </div>
                     <Link href="/portfolio">
@@ -156,8 +156,16 @@ const Dropdown = (props)=>{
         } else {
             if(toggle){
                 dropdownMobile.classList.remove("hidden");
+                setTimeout(()=>{
+                    dropdownMobile.classList.remove("opacity-0");
+                    dropdownMobile.classList.remove("-translate-x-96");
+                }, 200)
             } else {
-                dropdownMobile.classList.add("hidden");
+                dropdownMobile.classList.add("opacity-0");
+                dropdownMobile.classList.add("-translate-x-96");
+                setTimeout(()=>{
+                    dropdownMobile.classList.add("hidden");
+                }, 500)
             }
 
         }
@@ -173,9 +181,13 @@ const Dropdown = (props)=>{
                     flex
                     flex-col
                     pl-3
+                    -translate-x-96
                     mt-2
                     lg:hidden
                     py-2
+                    transform
+                    duration-500
+                    opacity-0
                 " 
             id="dropdown-mobile">
                 <Link href="/services">
