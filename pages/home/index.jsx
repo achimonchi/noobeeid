@@ -77,11 +77,11 @@ const Services=()=>{
       link : "/"
     },
     mobile : {
-      text : "Ini adalah halaman mobile",
+      text : "Kami membangun aplikasi mobile untuk membantu akselerasi bisnis kamu. Dengan teknologi terbaru dan sesuai dengan trend.",
       link : "/"
     },
     uiux : {
-      text : "UI dan UX yang baik, akan mendatangkan pelanggan yang loyal. Hal ini juga mampu membuat bisnismu berkembang sesuai dengan kebutuhan user",
+      text : "UI dan UX yang baik, akan mendatangkan pelanggan yang loyal. Hal ini juga mampu membuat bisnismu berkembang sesuai dengan kebutuhan customer",
       link : "/"
     },
     branding : {
@@ -158,7 +158,7 @@ const Services=()=>{
           <div className="col-span-7 col-start-6 flex flex-col mb-20">
             <img ref={el=>img=el} src="/assets/web.svg" className="h-8/12 self-center duration-200"/>
             <p ref={el=>text=el} className="w-7/12 text-xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ratione doloremque natus ducimus nemo, iusto asperiores, cum possimus rerum amet voluptatum accusantium optio in nesciunt reiciendis. Quaerat possimus nostrum maiores!
+            Kembangkan bisnismu dengan membuat websitemu sendiri. Dengan mempunyai website sendiri, tentunya akan meningkatkan kredibilitas bisnis kamu
             </p>
             <Link href="/">
               <span className="text-xl font-bold mt-4 cursor-pointer">Lihat Detail</span>
