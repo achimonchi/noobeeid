@@ -62,6 +62,10 @@ nav.bg-primary h1{
   color : white !important;
 }
 
+nav{
+  background: #FFD10F;
+}
+
 /* banner */
 html, body, #__next{
   height:100%;
@@ -69,7 +73,10 @@ html, body, #__next{
 
 @media (min-width: 920px){
   nav, nav.bg-primary{
-    background: transparent;
+    background: #FFD10F;
+    /* box-shadow: 0px 10px 20px -5px rgba(0,0,0,0.2); */
+    /* border-radius: 0 10px 10px 10px; */
+    border-bottom: 5px solid #444;
   }
 
   nav .nav-link{
