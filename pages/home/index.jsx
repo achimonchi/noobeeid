@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import {useRef, useEffect} from "react";
 import {TweenMax, TimelineLite, Power3, gsap, CSSPlugin} from "gsap";
+import {ArrowRight} from "react-feather";
 gsap.registerPlugin(CSSPlugin);
 
 export default function Home() {
@@ -95,20 +96,21 @@ const Services=()=>{
   }
 
   function changeButton(e){
-    const buttons = document.getElementsByTagName("button");
+    const buttons = document.querySelectorAll("#services button");
 
     for(let i = 0; i < buttons.length; i++){
       buttons[i].classList.remove("bg-primary")
       buttons[i].classList.remove("text-white")
-      buttons[i].classList.remove("w-full")
-      buttons[i].classList.add("w-11/12")
+      buttons[i].classList.remove("font-bold")
+      buttons[i].classList.remove("md:w-full")
+      buttons[i].classList.add("md:w-11/12")
     }
 
     button = e.target;
     button.classList.add("bg-primary")
     button.classList.add("text-white")
     button.classList.add("font-bold")
-    button.classList.add("w-full")
+    button.classList.add("md:w-full")
   }
 
   const changeServices=(services)=>{
@@ -120,48 +122,60 @@ const Services=()=>{
       <div className="container mx-auto">
         <div className="grid grid-cols-12 ">
           <div className="col-start-0 col-span-12 md:col-start-3 md:col-span-8 flex flex-col justify-start lg:justify-center top-0 h-full lg:p-5 px-5 order-2 lg:order-1 ">
-            <h1 className="text-center text-xl md:text-4xl lg:text-5xl mx-auto w-10/12">Kami menyediakan berbagai layanan <b>digital</b> untuk bisnis anda !</h1>
+            <h1 className="text-center text-2xl md:text-4xl lg:text-5xl mx-auto w-10/12">Kami menyediakan berbagai layanan <b>digital</b> untuk bisnis anda !</h1>
           </div>
         </div>
       </div>
-      <div className="container mx-auto mt-10 h-full">
+      <div className="container mx-auto mt-5 md:mt-10 h-full">
         <div className="grid grid-cols-12">
-          <div className="col-span-4 ">
-            <div className="button p-5 ">
+          <div className="col-span-12 md:col-span-4 ">
+            <div className="button p-5">
               <button id="btn-web" onClick={(e) => {
                   changeServices("web")
                   changeButton(e)
                 }
-              } className="w-full mb-6 duration-200 text-xl bg-white flex p-5 rounded-xl bg-primary text-white font-bold">WEB DEVELOPMENT</button>
+              } className="w-full md:w-full mb-2 md:mb-6 md:rounded-xl duration-200 text-sm md:text-xl bg-white flex py-2 px-5 md:py-5 md:px-5 rounded-md bg-primary text-white font-bold justify-between">WEB DEVELOPMENT <ArrowRight/></button>
               <button id="btn-mobile"  onClick={(e) => {
                 changeServices("mobile")
                 changeButton(e)
               }
-            } className="w-11/12 mb-6 duration-200 text-xl bg-white flex p-5 rounded-xl">MOBILE DEVELOPMENT</button>
+            } className="w-full md:w-11/12 mb-2 md:mb-6 md:rounded-xl duration-200 text-sm md:text-xl bg-white flex py-2 px-5 md:py-5 md:px-5 rounded-md justify-between">
+              MOBILE DEVELOPMENT
+              <ArrowRight/>
+            </button>
               <button id="btn-uiux"  onClick={(e) => {
                 changeServices("uiux")
                 changeButton(e)
               }
-            } className="w-11/12 mb-6 duration-200 text-xl bg-white flex p-5 rounded-xl">UI / UX DESIGN</button>
+            } className="w-full md:w-11/12 mb-2 md:mb-6 md:rounded-xl duration-200 text-sm md:text-xl bg-white flex py-2 px-5 md:py-5 md:px-5 rounded-md justify-between">
+              UI / UX DESIGN
+              <ArrowRight/>
+            </button>
               <button id="btn-branding"  onClick={(e) => {
                 changeServices("branding")
                 changeButton(e)
               }
-            } className="w-11/12 mb-6 duration-200 text-xl bg-white flex p-5 rounded-xl">BRANDING</button>
+            } className="w-full md:w-11/12 mb-2 md:mb-6 md:rounded-xl duration-200 text-sm md:text-xl bg-white flex py-2 px-5 md:py-5 md:px-5 rounded-md justify-between">
+              BRANDING
+              <ArrowRight/>
+            </button>
               <button id="btn-training"  onClick={(e) => {
                 changeServices("training")
                 changeButton(e)
                 }
-              } className="w-11/12 mb-6 duration-200 text-xl bg-white flex p-5 rounded-xl">TRAINING</button>
+              } className="w-full md:w-11/12 mb-2 md:mb-6 md:rounded-xl duration-200 text-sm md:text-xl bg-white flex py-2 px-5 md:py-5 md:px-5 rounded-md justify-between">
+                TRAINING
+                <ArrowRight/>
+              </button>
             </div>
           </div>
-          <div className="col-span-7 col-start-6 flex flex-col mb-20">
-            <img ref={el=>img=el} src="/assets/web.svg" className="h-8/12 self-center duration-200"/>
-            <p ref={el=>text=el} className="w-7/12 text-xl">
+          <div className="col-span-12 col-start-1 md:col-span-7 md:col-start-6 p-5 flex flex-col mb-20">
+            <img ref={el=>img=el} alt="img services" src="/assets/web.svg" className="h-6/12 self-center duration-200"/>
+            <p ref={el=>text=el} className="md:w-7/12 w-full text-md md:text-xl">
             Kembangkan bisnismu dengan membuat websitemu sendiri. Dengan mempunyai website sendiri, tentunya akan meningkatkan kredibilitas bisnis kamu
             </p>
             <Link href="/">
-              <span className="text-xl font-bold mt-4 cursor-pointer">Lihat Detail</span>
+              <span className="text-sm md:text-xl font-bold mt-4 cursor-pointer underline">Lihat Detail</span>
             </Link>
           </div>
         </div>
